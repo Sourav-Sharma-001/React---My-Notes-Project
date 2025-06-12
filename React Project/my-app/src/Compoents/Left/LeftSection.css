@@ -28,12 +28,12 @@
 
 .add-btn {    
   position: absolute;
-  bottom: 50px;
-  left: 520px;
+  bottom: 3%;
+  left: 18%;
   background-color: #16008b;
   color: white;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border: none;
   border-radius: 50%;    
   cursor: pointer;

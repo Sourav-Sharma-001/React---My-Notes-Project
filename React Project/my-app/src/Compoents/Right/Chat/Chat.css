@@ -11,7 +11,7 @@
   width: 100%;  
   display: flex;
   align-items: center;
-  gap: 20px;  
+  gap: 1%;  
 }
 
 .chat-initials {
@@ -61,8 +61,8 @@
 
 .textarea-sec button {
   position: absolute;
-  right: 70px;
-  bottom: 50px;
+  right: 2%;
+  bottom: 3%;
   border: none;
   background-color: white;
   cursor: pointer;
