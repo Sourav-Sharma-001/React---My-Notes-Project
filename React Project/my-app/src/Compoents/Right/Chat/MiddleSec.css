@@ -1,0 +1,49 @@
+.middle-sec-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #f2f2f2;
+}
+
+.message-row {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.message-bubble {
+  background-color: white;
+  color: black;
+  padding: 10px 14px;
+  border-radius: 15px;
+  max-width: 60%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-text {
+  font-size: 14px;
+}
+
+.message-meta {
+  color: rgb(58, 57, 57);
+  align-self: flex-end;
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.message-date, .message-time {
+  font-size: 14px;
+  align-self: center;
+  font-weight: bold;
+}
+
+.dot {
+  font-size: 28px;
+  line-height: 1;
+}

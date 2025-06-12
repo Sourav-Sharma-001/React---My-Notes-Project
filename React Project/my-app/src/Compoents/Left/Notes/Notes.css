@@ -1,0 +1,23 @@
+.notes-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  width: 60%;
+  margin-bottom: 20px;
+}
+
+.initials {
+  background-color: blue;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+}
+
+.heading {
+  font-weight: bold;
+  font-size: 20px;
+}

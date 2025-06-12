@@ -1,0 +1,23 @@
+.right-sec {  
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  
+}
+
+.container {
+  place-self: center;
+  width: 50%;
+  height: 50%;
+  transform: translate(0, 50%);
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 40px;  
+}
+
+.etee { 
+  position: fixed;
+  place-self: center;
+  bottom: 30px;
+}

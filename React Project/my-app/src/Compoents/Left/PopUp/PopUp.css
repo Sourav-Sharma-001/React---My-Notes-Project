@@ -1,0 +1,87 @@
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+.modal-container > div {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+}
+
+
+.group-name-sec {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.group-name-sec div {
+  font-weight: bold;
+}
+
+.group-name-sec input {
+  width: 60%;
+  border-radius: 15px;
+  padding: 3px 10px;
+}
+
+.color-sec {
+  display: flex;
+  place-items: center;
+  gap: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.contains-color {
+  display: flex;
+  gap: 10px;
+}
+
+.contains-color div {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.2s ease;
+}
+
+.contains-color .selected {
+  border: 2px solid black;
+}
+
+.create-btn {
+  transform: translate(280px, 0);
+  background-color: rgb(34, 34, 134);
+  color: white;
+  width: 100px;
+  padding: 3px 0px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.contains-color .selected {
+  border: 2px solid black;
+  box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+}
+
+
+.contains-color div:hover {
+  transform: scale(1.1);
+}
+
