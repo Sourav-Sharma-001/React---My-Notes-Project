@@ -1,6 +1,6 @@
 .left-sec {
   background-color: white;
-  width: 35%;
+  width: 30%;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -17,6 +17,7 @@
 .scroll-container {
   place-items: center;
   height: 100%;  
+  overflow-y: auto;
 }
 
 .scroll {
@@ -29,7 +30,7 @@
 .add-btn {    
   position: absolute;
   bottom: 3%;
-  left: 18%;
+  left: 23%;
   background-color: #16008b;
   color: white;
   width: 80px;

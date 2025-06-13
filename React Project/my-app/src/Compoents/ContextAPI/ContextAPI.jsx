@@ -5,9 +5,19 @@ const Context = createContext();
 export default function ContextAPI({ children }) {
   const [groupList, setGroupList] = useState([]);
   const [color, setColor] = useState("");
+  const [selectedGroup, setSelectedGroup] = useState(null);
+  const [messagesByGroup, setMessagesByGroup] = useState({});
 
   const addGroup = (name, color) => {
     setGroupList(prev => [...prev, { name, color }]);
+    setMessagesByGroup(prev => ({ ...prev, [name]: [] }));
+  };
+
+  const addMessageToGroup = (groupName, message) => {
+    setMessagesByGroup(prev => ({
+      ...prev,
+      [groupName]: [...(prev[groupName] || []), message]
+    }));
   };
 
   const getInitials = (name) => {
@@ -32,7 +42,11 @@ export default function ContextAPI({ children }) {
       color,
       setColor,
       getInitials,
-      capitalizeWords
+      capitalizeWords,
+      selectedGroup,
+      setSelectedGroup,
+      messagesByGroup,
+      addMessageToGroup
     }}>
       {children}
     </Context.Provider>

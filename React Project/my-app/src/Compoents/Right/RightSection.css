@@ -9,15 +9,40 @@
   place-self: center;
   width: 50%;
   height: 50%;
-  transform: translate(0, 50%);
+  transform: translate(0, 40%);
   display: flex;
   flex-direction: column;
-  place-items: center;
-  gap: 40px;  
+  justify-content: center;
+  align-items: center;
+  gap: 5%;  
 }
 
-.etee { 
-  position: fixed;
+.container div {
+  display: flex;
+  justify-content: center;
+}
+
+.remove-bg {
+  width: 90%;
+}
+
+.pocket-notes-R {
+  width: 60%;
+}
+
+.message {
+  width: 80%;
+}
+
+.etee {
+  display: flex;
   place-self: center;
-  bottom: 30px;
+  margin-bottom: 1%; 
+  align-items: center;
+  justify-content: center; 
+  gap: 1%;
+}
+
+.etee img {
+  width: 70%;
 }
