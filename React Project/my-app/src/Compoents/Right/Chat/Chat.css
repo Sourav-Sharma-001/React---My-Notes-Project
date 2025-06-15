@@ -67,3 +67,8 @@
   background-color: white;
   cursor: pointer;
 }
+
+.textarea-sec button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

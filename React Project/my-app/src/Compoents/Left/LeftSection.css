@@ -40,3 +40,15 @@
   cursor: pointer;
   font-size: 62px;  
 }
+
+@media (max-width: 768px) {
+  .left-sec {
+    width: 100%;
+    height: auto;
+  }
+
+  .add-btn {
+    left: 50%;
+    transform: translateX(-20%);
+  }
+}
