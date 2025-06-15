@@ -21,8 +21,10 @@
   border-radius: 15px;
   max-width: 60%;
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: inline-block;
+  word-break: break-word;       
+  white-space: pre-wrap;       
+  overflow-wrap: break-word;    
 }
 
 .message-text {

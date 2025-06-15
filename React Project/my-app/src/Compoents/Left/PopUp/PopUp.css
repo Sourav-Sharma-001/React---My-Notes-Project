@@ -11,14 +11,12 @@
   z-index: 1000;
 }
 
-
-.modal-container > div {
+.modal-box {
   background: white;
   padding: 20px;
   border-radius: 10px;
   width: 400px;
 }
-
 
 .group-name-sec {
   display: flex;
@@ -85,3 +83,29 @@
   transform: scale(1.1);
 }
 
+@media (max-width: 768px) {
+  .modal-box {
+    width: 70%;
+  }
+
+  .create-btn {
+    transform: translate(180%);
+  }
+
+  .group-name-sec div {
+    font-size: 14px;
+  }
+
+  .group-name-sec input {
+    width: 54%;
+  }
+
+  .choose-color-text {
+    font-size: 14px;
+  }
+
+  .contains-color {
+    width: 54%;
+    gap: 5px;
+  }
+}

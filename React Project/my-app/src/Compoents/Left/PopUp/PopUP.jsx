@@ -41,7 +41,7 @@ export default function PopUP({ onClose }) {
         </div>
 
         <div className="color-sec">
-          <div>Choose colour</div>
+          <div className="choose-color-text">Choose colour</div>
           <div className="contains-color">
             {colors.map((clr, idx) => (
               <div

@@ -5,9 +5,8 @@ import MiddleSec from "./middleSec";
 import { useGroupContext } from "../../ContextAPI/ContextAPI";
 
 export default function Chat() {
-  const { selectedGroup } = useGroupContext();
+  const { selectedGroup, groupMessages, setGroupMessages } = useGroupContext();
   const [inputValue, setInputValue] = useState("");
-  const [groupMessages, setGroupMessages] = useState({});
 
   const currentGroupName = selectedGroup?.name;
 

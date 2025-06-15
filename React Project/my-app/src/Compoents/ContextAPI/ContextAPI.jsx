@@ -7,6 +7,8 @@ export default function ContextAPI({ children }) {
   const [color, setColor] = useState("");
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [messagesByGroup, setMessagesByGroup] = useState({});
+  const [groupMessages, setGroupMessages] = useState({});
+
 
   const addGroup = (name, color) => {
     setGroupList(prev => [...prev, { name, color }]);
@@ -46,7 +48,9 @@ export default function ContextAPI({ children }) {
       selectedGroup,
       setSelectedGroup,
       messagesByGroup,
-      addMessageToGroup
+      addMessageToGroup,
+      groupMessages,
+      setGroupMessages
     }}>
       {children}
     </Context.Provider>
