@@ -4,32 +4,3 @@
   height: 100vh;
 }
 
-@media (max-width: 768px) {
-  .section-container {
-    flex-direction: column;
-  }
-
-  .left-sec {
-    display: block;
-    width: 100%;
-  }
-
-  .chat-container,
-  .right-sec {
-    display: none;
-  }
-
-  .show-chat .left-sec {
-    display: none;
-  }
-
-  .show-chat .chat-container {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .show-chat .right-sec {
-    display: none;
-  }
-}

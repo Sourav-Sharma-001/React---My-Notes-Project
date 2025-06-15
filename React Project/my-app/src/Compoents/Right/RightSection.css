@@ -46,3 +46,9 @@
 .etee img {
   width: 70%;
 }
+
+@media (max-width: 768px) {
+  .right-sec {
+    display: none;
+  }
+}
