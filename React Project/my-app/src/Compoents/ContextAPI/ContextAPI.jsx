@@ -9,10 +9,16 @@ export default function ContextAPI({ children }) {
   const [messagesByGroup, setMessagesByGroup] = useState({});
   const [groupMessages, setGroupMessages] = useState({});
 
-
   const addGroup = (name, color) => {
-    setGroupList(prev => [...prev, { name, color }]);
-    setMessagesByGroup(prev => ({ ...prev, [name]: [] }));
+    const trimmed = name.trim();
+    const exists = groupList.some(
+      (group) => group.name.toLowerCase() === trimmed.toLowerCase()
+    );
+    if (exists) return false;
+
+    setGroupList(prev => [...prev, { name: trimmed, color }]);
+    setMessagesByGroup(prev => ({ ...prev, [trimmed]: [] }));
+    return true;
   };
 
   const addMessageToGroup = (groupName, message) => {
