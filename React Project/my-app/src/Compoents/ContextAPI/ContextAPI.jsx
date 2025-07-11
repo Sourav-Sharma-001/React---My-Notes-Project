@@ -1,48 +1,75 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const Context = createContext();
 
 export default function ContextAPI({ children }) {
   const [groupList, setGroupList] = useState([]);
+  const [groupMessages, setGroupMessages] = useState({});
   const [color, setColor] = useState("");
   const [selectedGroup, setSelectedGroup] = useState(null);
-  const [messagesByGroup, setMessagesByGroup] = useState({});
-  const [groupMessages, setGroupMessages] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedMessages = localStorage.getItem("groupMessages");
-    if (savedMessages) {
-      setGroupMessages(JSON.parse(savedMessages));
+    const storedGroups = localStorage.getItem("groupList");
+    const storedMessages = localStorage.getItem("groupMessages");
+
+    if (storedGroups) {
+      try {
+        setGroupList(JSON.parse(storedGroups));
+      } catch {}
     }
+
+    if (storedMessages) {
+      try {
+        setGroupMessages(JSON.parse(storedMessages));
+      } catch {}
+    }
+
+    setLoading(false);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("groupMessages", JSON.stringify(groupMessages));
-  }, [groupMessages]);
+    if (!loading) {
+      localStorage.setItem("groupList", JSON.stringify(groupList));
+    }
+  }, [groupList, loading]);
+
+  useEffect(() => {
+    if (!loading) {
+      localStorage.setItem("groupMessages", JSON.stringify(groupMessages));
+    }
+  }, [groupMessages, loading]);
 
   const addGroup = (name, color) => {
     const trimmed = name.trim();
     const exists = groupList.some(
       (group) => group.name.toLowerCase() === trimmed.toLowerCase()
     );
-    if (exists) return false;
-
+    const wordCount = trimmed.split(" ").filter(Boolean).length;
+  
+    if (trimmed === "") return "Group name is required";
+    if (exists) return "Group name already exists";
+    if (wordCount > 2) return "Group name cannot have more than 2 words";
+    if (trimmed.length > 14) return "Group name cannot exceed 14 characters";
+    if (!color) return "Please select a background color";
+  
     setGroupList(prev => [...prev, { name: trimmed, color }]);
-    setMessagesByGroup(prev => ({ ...prev, [trimmed]: [] }));
+    setGroupMessages(prev => ({ ...prev, [trimmed]: [] }));
     return true;
-  };
+  };  
 
   const addMessageToGroup = (groupName, message) => {
-    setMessagesByGroup(prev => ({
+    setGroupMessages((prev) => ({
       ...prev,
-      [groupName]: [...(prev[groupName] || []), message]
+      [groupName]: [...(prev[groupName] || []), message],
     }));
   };
 
   const getInitials = (name) => {
     const words = name.trim().split(" ").filter(Boolean);
-    if (words.length === 1) return words[0][0].toUpperCase();
-    return (words[0][0] + words[1][0]).toUpperCase();
+    return words.length === 1
+      ? words[0][0].toUpperCase()
+      : (words[0][0] + words[1][0]).toUpperCase();
   };
 
   const capitalizeWords = (name) => {
@@ -50,25 +77,27 @@ export default function ContextAPI({ children }) {
       .trim()
       .split(" ")
       .filter(Boolean)
-      .map(word => word[0].toUpperCase() + word.slice(1).toLowerCase())
+      .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
       .join(" ");
   };
 
   return (
-    <Context.Provider value={{
-      groupList,
-      addGroup,
-      color,
-      setColor,
-      getInitials,
-      capitalizeWords,
-      selectedGroup,
-      setSelectedGroup,
-      messagesByGroup,
-      addMessageToGroup,
-      groupMessages,
-      setGroupMessages
-    }}>
+    <Context.Provider
+      value={{
+        groupList,
+        addGroup,
+        color,
+        setColor,
+        getInitials,
+        capitalizeWords,
+        selectedGroup,
+        setSelectedGroup,
+        groupMessages,
+        setGroupMessages,
+        addMessageToGroup,
+        loading,
+      }}
+    >
       {children}
     </Context.Provider>
   );

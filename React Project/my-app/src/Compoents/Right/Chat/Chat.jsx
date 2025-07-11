@@ -9,7 +9,6 @@ export default function Chat() {
   const [inputValue, setInputValue] = useState("");
 
   const currentGroupName = selectedGroup?.name;
-
   const messages = groupMessages[currentGroupName] || [];
 
   const handleSend = () => {
@@ -29,6 +28,13 @@ export default function Chat() {
       }));
 
       setInputValue("");
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
     }
   };
 
@@ -68,6 +74,7 @@ export default function Chat() {
           placeholder="Write notes here..."
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <button onClick={handleSend} disabled={inputValue.trim() === ""}>
           <IoSendSharp size={40} />

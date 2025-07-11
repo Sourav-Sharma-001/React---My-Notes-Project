@@ -9,26 +9,14 @@ export default function PopUP({ onClose }) {
 
   const handleCreateBtn = () => {
     const trimmed = inputValue.trim();
-    const words = trimmed.split(" ").filter(Boolean);
+    const result = addGroup(trimmed, color);
 
-    if (words.length === 0 || words.length > 2 || trimmed.length < 2) {
-      alert("Group name must be 1 or 2 words, and at least 2 characters.");
-      return;
+    if (result === true) {
+      setColor("");
+      onClose();
+    } else {
+      alert(result);
     }
-
-    if (!color) {
-      alert("Please choose color.");
-      return;
-    }
-
-    const success = addGroup(trimmed, color);
-    if (!success) {
-      alert("Group name already exists!");
-      return;
-    }
-
-    setColor("");
-    onClose();
   };
 
   const handleClick = (e) => {

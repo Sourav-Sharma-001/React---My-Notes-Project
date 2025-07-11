@@ -3,7 +3,9 @@ import "./Notes.css";
 import { useGroupContext } from '../../ContextAPI/ContextAPI';
 
 export default function Notes() {
-  const { groupList, getInitials, capitalizeWords, setSelectedGroup } = useGroupContext();  
+  const { groupList, getInitials, capitalizeWords, setSelectedGroup, loading } = useGroupContext();
+
+  if (loading) return null;
 
   return (
     <>
@@ -13,10 +15,7 @@ export default function Notes() {
           key={index}
           onClick={() => setSelectedGroup(group)}
         >
-          <div
-            className='initials'
-            style={{ backgroundColor: group.color }}
-          >
+          <div className='initials' style={{ backgroundColor: group.color }}>
             {getInitials(group.name)}
           </div>
           <div className='heading'>{capitalizeWords(group.name)}</div>
