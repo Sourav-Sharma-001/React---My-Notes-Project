@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const Context = createContext();
 
@@ -8,6 +8,17 @@ export default function ContextAPI({ children }) {
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [messagesByGroup, setMessagesByGroup] = useState({});
   const [groupMessages, setGroupMessages] = useState({});
+
+  useEffect(() => {
+    const savedMessages = localStorage.getItem("groupMessages");
+    if (savedMessages) {
+      setGroupMessages(JSON.parse(savedMessages));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("groupMessages", JSON.stringify(groupMessages));
+  }, [groupMessages]);
 
   const addGroup = (name, color) => {
     const trimmed = name.trim();
