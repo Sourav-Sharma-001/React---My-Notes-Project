@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Chat.css";
 import { IoSendSharp } from "react-icons/io5";
-import MiddleSec from "./middleSec";
+import MiddleSec from "./MiddleSec";
 import { useGroupContext } from "../../ContextAPI/ContextAPI";
 
 export default function Chat() {
